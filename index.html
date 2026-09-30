@@ -193,11 +193,14 @@ const WHATSAPP = "5533933003908";
 const wa = (msg) => "https://wa.me/" + WHATSAPP + (msg ? "?text=" + encodeURIComponent(msg) : "");
 document.querySelectorAll(".btn[data-msg]").forEach(a => { a.href = wa(a.dataset.msg); });
 document.getElementById("wa-main").href = wa("");
-/* Rastreamento de cliques: cada link envia um evento com o nome do botão */
+/* Rastreamento de cliques (funciona no plano grátis da Vercel):
+   cada clique vira uma "página virtual" /clique/<botao> no painel Analytics > Pages */
+const slug = (t) => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/&/g, "e").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 document.querySelectorAll("a[href]").forEach(a => {
+  if (a.hostname && a.hostname !== location.hostname) { a.target = "_blank"; a.rel = "noopener"; }
   a.addEventListener("click", () => {
     const nome = (a.querySelector(".lbl")?.textContent || a.getAttribute("aria-label") || a.textContent).trim();
-    try { window.va && window.va("event", { name: "clique", data: { link: nome } }); } catch (e) {}
+    try { window.va && window.va("pageview", { route: "/clique/" + slug(nome), path: "/clique/" + slug(nome) }); } catch (e) {}
   });
 });
 </script>
