@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111211">
+<meta property="og:title" content="Casa 3D — Espaço Maker">
+<meta property="og:description" content="Filamentos, resinas, impressoras 3D, encomendas e treinamentos em Governador Valadares.">
+<meta property="og:image" content="https://casa3d.online/brand/casa3d-logo-dark.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='170 30 374 290'%3E%3Cg fill='none' stroke='%23FF6B19' stroke-width='30' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='190,158 357,52 524,158'/%3E%3Cpolygon points='357,112 438,160 357,206 276,160'/%3E%3Cpolyline points='274,212 357,258 440,212'/%3E%3Cpolyline points='274,250 357,296 440,250'/%3E%3C/g%3E%3C/svg%3E">
+<title>Casa 3D Links</title>
+<meta name="description" content="Casa 3D — Espaço Maker em Governador Valadares. Filamentos, resinas, impressoras 3D, encomendas e treinamentos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: coluna única centrada (link na bio), logo → 5 botões por setor → rodapé escuro com contato. Tokens = ID oficial casa3d.online/identidade-visual */
+:root{
+  --preto:#111211; --branco:#F9F9F6; --papel:#F5F5F1;
+  --laranja:#FF6B19; --laranja-fundo:#CF4A08; --azul:#147DF5; --verde:#B8F457;
+  --bg:var(--branco); --fg:var(--preto); --muted:#5E615B; --line:#E3E3DC;
+  --foot-bg:var(--preto); --foot-fg:var(--branco); --foot-muted:#A7AAA2; --foot-line:#2A2C2A;
+  --wordmark:var(--preto);
+  --btn-neutro-bg:var(--preto); --btn-neutro-fg:var(--branco);
+  --layer:rgba(17,18,17,.22);
+  --f-display:"Chakra Petch","Bahnschrift","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#161716; --fg:var(--branco); --muted:#A7AAA2; --line:#2A2C2A;
+  --foot-bg:#0B0C0B; --foot-line:#242624; --wordmark:var(--branco);
+  --btn-neutro-bg:var(--branco); --btn-neutro-fg:var(--preto);
+  --layer:rgba(0,0,0,.5); color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#161716; --fg:var(--branco); --muted:#A7AAA2; --line:#2A2C2A;
+  --foot-bg:#0B0C0B; --foot-line:#242624; --wordmark:var(--branco);
+  --btn-neutro-bg:var(--branco); --btn-neutro-fg:var(--preto);
+  --layer:rgba(0,0,0,.5); color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.5;display:flex;flex-direction:column;min-height:100vh;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--laranja);outline-offset:3px;border-radius:6px}
+
+main{flex:1;display:flex;justify-content:center;padding-inline:16px;padding-block:48px 56px;
+  /* linhas de camada: 1 linha a cada 4px, como as camadas de uma peça impressa */
+  background-image:repeating-linear-gradient(to bottom,transparent 0 3px,color-mix(in srgb,var(--fg) 3.5%,transparent) 3px 4px);
+  background-size:100% 4px;
+}
+.wrap{width:100%;max-width:400px;display:flex;flex-direction:column;align-items:center;gap:32px}
+
+.brand{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.brand svg.icon{width:96px;height:auto;display:block}
+.wordmark{display:flex;flex-direction:column;align-items:center;line-height:1}
+.wordmark .name{font-family:var(--f-display);font-weight:700;font-size:48px;letter-spacing:-.01em;color:var(--wordmark)}
+.wordmark .name b{color:var(--laranja);font-weight:700}
+.wordmark .tag{font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.62em;margin-top:6px;padding-left:.62em;color:var(--wordmark)}
+.tagline{font-size:14.5px;color:var(--muted);max-width:30ch;text-wrap:balance;margin:4px 0 0}
+
+nav.links{width:100%;display:flex;flex-direction:column;gap:14px}
+.btn{--b:var(--laranja);--t:var(--preto);
+  display:flex;align-items:center;gap:14px;min-height:60px;padding:12px 18px;border-radius:10px;
+  background:var(--b);color:var(--t);text-decoration:none;
+  font-family:var(--f-body);font-weight:700;font-size:18.5px;letter-spacing:-.005em;
+  box-shadow:0 3px 0 var(--layer),0 6px 0 color-mix(in srgb,var(--layer) 50%,transparent);
+  transition:transform .16s ease,box-shadow .16s ease;
+}
+.btn .ic{width:26px;height:26px;flex:0 0 26px}
+.btn .lbl{flex:1;text-align:center;padding-right:26px}
+.btn:hover{transform:translateY(-3px);box-shadow:0 6px 0 var(--layer),0 10px 0 color-mix(in srgb,var(--layer) 45%,transparent)}
+.btn:active{transform:translateY(1px);box-shadow:0 1px 0 var(--layer)}
+.btn.filamentos{--b:var(--laranja);--t:var(--preto)}
+.btn.encomendas{--b:var(--laranja-fundo);--t:var(--branco)}
+.btn.impressoras{--b:var(--verde);--t:var(--preto)}
+.btn.treinamentos{--b:var(--azul);--t:#fff}
+.btn.outros{--b:var(--btn-neutro-bg);--t:var(--btn-neutro-fg)}
+
+.mini{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;font-size:14px;font-weight:600}
+.mini a{text-decoration:none;color:var(--muted);border-bottom:1.5px solid transparent;padding-bottom:1px}
+.mini a:hover{color:var(--fg);border-color:var(--laranja)}
+
+footer{background:var(--foot-bg);color:var(--foot-fg);padding-inline:16px;padding-block:40px 36px}
+.fwrap{max-width:720px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:28px 40px}
+.fwrap > *{min-width:0}
+.eyebrow{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--laranja);margin:0 0 10px}
+.addr{font-size:16px;line-height:1.55;margin:0 0 8px}
+.addr a{text-decoration:none;border-bottom:1.5px solid var(--laranja)}
+.contact{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;font-size:15px}
+.contact li{display:flex;gap:10px;align-items:baseline}
+.contact .k{color:var(--foot-muted);font-size:13px;min-width:88px;flex:0 0 88px}
+.contact a{text-decoration:none}
+.contact a:hover{color:var(--laranja)}
+.num{font-variant-numeric:tabular-nums}
+.social{display:flex;gap:10px;margin-top:6px}
+.social a{width:42px;height:42px;display:grid;place-items:center;border:1.5px solid var(--foot-line);border-radius:10px;color:var(--foot-fg);transition:border-color .15s,color .15s}
+.social a:hover{border-color:var(--laranja);color:var(--laranja)}
+.social svg{width:20px;height:20px}
+.legal{grid-column:1/-1;border-top:1px solid var(--foot-line);padding-top:18px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:13px;color:var(--foot-muted)}
+.legal strong{font-family:var(--f-display);font-weight:600;color:var(--foot-fg);letter-spacing:.04em}
+
+@media (max-width:600px){.fwrap{grid-template-columns:1fr}.wordmark .name{font-size:44px}}
+@media (prefers-reduced-motion:reduce){.btn,.social a{transition:none}.btn:hover{transform:none}}
+</style>
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+
+
+<main>
+  <div class="wrap">
+    <header class="brand">
+      <svg class="icon" viewBox="170 30 374 290" aria-hidden="true" fill="none" stroke="#FF6B19" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="190,158 357,52 524,158"/>
+        <polygon points="357,112 438,160 357,206 276,160"/>
+        <polyline points="274,212 357,258 440,212"/>
+        <polyline points="274,250 357,296 440,250"/>
+      </svg>
+      <div class="wordmark" role="img" aria-label="casa3D — Espaço Maker">
+        <span class="name" aria-hidden="true">casa<b>3D</b></span>
+        <span class="tag" aria-hidden="true">ESPAÇO MAKER</span>
+      </div>
+      <p class="tagline">Um espaço para quem imagina. Uma casa para quem faz.</p>
+    </header>
+
+    <nav class="links" aria-label="Fale com a Casa 3D">
+      <a class="btn filamentos" data-msg="Olá, Casa 3D! Quero informações sobre filamentos e resinas." href="#">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/><path d="M12 3v5.8M12 15.2V21"/></svg>
+        <span class="lbl">Filamentos &amp; Resinas</span>
+      </a>
+      <a class="btn encomendas" data-msg="Olá, Casa 3D! Quero fazer uma encomenda de impressão 3D." href="#">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8 20 7.4v9.2L12 21.2 4 16.6V7.4z"/><path d="M4 7.4 12 12l8-4.6M12 12v9.2"/></svg>
+        <span class="lbl">Encomendas 3D</span>
+      </a>
+      <a class="btn impressoras" data-msg="Olá, Casa 3D! Quero conhecer as impressoras 3D." href="#">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3" width="17" height="18" rx="1.5"/><path d="M3.5 7.5h17M9 7.5v3.5h6V7.5M12 11v2.5"/><path d="M7.5 17.5h9"/></svg>
+        <span class="lbl">Impressoras 3D</span>
+      </a>
+      <a class="btn treinamentos" data-msg="Olá, Casa 3D! Quero informações sobre treinamentos e suporte técnico." href="#">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.2 5.2L3.8 17.2a1.8 1.8 0 0 0 2.6 2.6l5.7-5.7a4 4 0 0 0 5.2-5.2l-2.4 2.4-2.4-.6-.6-2.4z"/></svg>
+        <span class="lbl">Treinamentos &amp; Suporte</span>
+      </a>
+      <a class="btn outros" data-msg="Olá, Casa 3D! Vim pelo Instagram e tenho uma dúvida." href="#">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20.2l1.1-4.2A8 8 0 1 1 20 12z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></svg>
+        <span class="lbl">Outros</span>
+      </a>
+    </nav>
+
+    <div class="mini" aria-label="Mais da Casa 3D">
+      <a href="https://casa3d.online">Site</a>
+      <a href="https://casa3d.online/loja">Loja online</a>
+      <a href="https://casa3d.online/blog">Blog</a>
+      <a href="https://casa3d.online/podcast">Podcast</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="fwrap">
+    <div>
+      <p class="eyebrow">Visite o espaço</p>
+      <p class="addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=Casa%203D%20Rua%20Dom%20Pedro%20II%20348%20Governador%20Valadares">Rua Dom Pedro II, 348<br>Governador Valadares, MG</a></p>
+      <div class="social" aria-label="Redes sociais">
+        <a href="https://www.instagram.com/casa3dmg" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.tiktok.com/@casa3dmg" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.2 4.4 5 4.6"/></svg></a>
+        <a href="https://www.youtube.com/channel/UCEtvV40n5YkqkFZMkOVnXhA" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="m10 9.2 5 2.8-5 2.8z" fill="currentColor"/></svg></a>
+        <a href="https://www.linkedin.com/company/casa-3d-espa%C3%A7o-make" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5V16M8 7.6v.1M12 16v-5.5M12 13c0-1.6 1-2.6 2.3-2.6S16.5 11.3 16.5 13v3"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow">Fale com a gente</p>
+      <ul class="contact">
+        <li><span class="k">WhatsApp</span><a class="num" id="wa-main" href="#">(33) 93300-3908</a></li>
+        <li><span class="k">WhatsApp 2</span><a class="num" href="https://wa.me/553384653046">(33) 8465-3046</a></li>
+        <li><span class="k">Telefone</span><span class="num">(33) 3082-3168</span></li>
+        <li><span class="k">E-mail</span><span style="overflow-wrap:anywhere">contatocasa3d@casa3d.online</span></li>
+      </ul>
+    </div>
+    <div class="legal">
+      <strong>Espaço Maker Casa 3D</strong>
+      <span>Ideias livres. Possibilidades reais.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Número central de atendimento: troque aqui e todos os botões atualizam */
+const WHATSAPP = "5533933003908";
+const wa = (msg) => "https://wa.me/" + WHATSAPP + (msg ? "?text=" + encodeURIComponent(msg) : "");
+document.querySelectorAll(".btn[data-msg]").forEach(a => { a.href = wa(a.dataset.msg); });
+document.getElementById("wa-main").href = wa("");
+/* Rastreamento de cliques: cada link envia um evento com o nome do botão */
+document.querySelectorAll("a[href]").forEach(a => {
+  a.addEventListener("click", () => {
+    const nome = (a.querySelector(".lbl")?.textContent || a.getAttribute("aria-label") || a.textContent).trim();
+    try { window.va && window.va("event", { name: "clique", data: { link: nome } }); } catch (e) {}
+  });
+});
+</script>
+
+</body>
+</html>
