@@ -89,7 +89,7 @@ footer{background:var(--foot-bg);color:var(--foot-fg);padding-inline:16px;paddin
 .addr a{text-decoration:none;border-bottom:1.5px solid var(--laranja)}
 .contact{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;font-size:15px}
 .contact li{display:flex;gap:10px;align-items:baseline}
-.contact .k{color:var(--foot-muted);font-size:13px;min-width:88px;flex:0 0 88px}
+.contact .k{color:var(--foot-muted);font-size:13px;line-height:1.3;flex:0 0 108px}
 .contact a{text-decoration:none}
 .contact a:hover{color:var(--laranja)}
 .num{font-variant-numeric:tabular-nums}
@@ -128,23 +128,23 @@ footer{background:var(--foot-bg);color:var(--foot-fg);padding-inline:16px;paddin
     </header>
 
     <nav class="links" aria-label="Fale com a Casa 3D">
-      <a class="btn filamentos" data-msg="Olá Casa3D! Vim do Instagram e gostaria de informações!" href="#">
+      <a class="btn filamentos" href="#">
         <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/><path d="M12 3v5.8M12 15.2V21"/></svg>
         <span class="lbl">Filamentos &amp; Resinas</span>
       </a>
-      <a class="btn encomendas" data-msg="Olá Casa3D! Vim do Instagram e gostaria de informações!" href="#">
+      <a class="btn encomendas" href="#">
         <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8 20 7.4v9.2L12 21.2 4 16.6V7.4z"/><path d="M4 7.4 12 12l8-4.6M12 12v9.2"/></svg>
         <span class="lbl">Encomendas 3D</span>
       </a>
-      <a class="btn impressoras" data-msg="Olá Casa3D! Vim do Instagram e gostaria de informações!" href="#">
+      <a class="btn impressoras" href="#">
         <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3" width="17" height="18" rx="1.5"/><path d="M3.5 7.5h17M9 7.5v3.5h6V7.5M12 11v2.5"/><path d="M7.5 17.5h9"/></svg>
         <span class="lbl">Impressoras 3D</span>
       </a>
-      <a class="btn treinamentos" data-msg="Olá Casa3D! Vim do Instagram e gostaria de informações!" href="#">
+      <a class="btn treinamentos" href="#">
         <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.2 5.2L3.8 17.2a1.8 1.8 0 0 0 2.6 2.6l5.7-5.7a4 4 0 0 0 5.2-5.2l-2.4 2.4-2.4-.6-.6-2.4z"/></svg>
         <span class="lbl">Treinamentos &amp; Suporte</span>
       </a>
-      <a class="btn outros" data-msg="Olá Casa3D! Vim do Instagram e gostaria de informações!" href="#">
+      <a class="btn outros" href="#">
         <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20.2l1.1-4.2A8 8 0 1 1 20 12z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></svg>
         <span class="lbl">Outros</span>
       </a>
@@ -174,8 +174,8 @@ footer{background:var(--foot-bg);color:var(--foot-fg);padding-inline:16px;paddin
     <div>
       <p class="eyebrow">Fale com a gente</p>
       <ul class="contact">
-        <li><span class="k">WhatsApp</span><a class="num" id="wa-main" href="#">(33) 8412-1784</a></li>
-        <li><span class="k">WhatsApp 2</span><a class="num" href="https://wa.me/553384653046">(33) 8465-3046</a></li>
+        <li><span class="k">Encomendas e treinamentos</span><a class="num" data-whatsapp="projetos" href="https://wa.me/553384121784">(33) 8412-1784</a></li>
+        <li><span class="k">Filamentos e impressoras</span><a class="num" data-whatsapp="loja" href="https://wa.me/553384653046">(33) 8465-3046</a></li>
         <li><span class="k">Telefone</span><span class="num">(33) 3082-3168</span></li>
         <li><span class="k">E-mail</span><span style="overflow-wrap:anywhere">contatocasa3d@casa3d.online</span></li>
       </ul>
@@ -188,12 +188,38 @@ footer{background:var(--foot-bg);color:var(--foot-fg);padding-inline:16px;paddin
 </footer>
 
 <script>
-/* Número central de atendimento: troque aqui e todos os botões atualizam */
-const WHATSAPP = "553384121784";
-const MSG = "Olá Casa3D! Vim do Instagram e gostaria de informações!";
-const wa = (msg) => "https://wa.me/" + WHATSAPP + (msg ? "?text=" + encodeURIComponent(msg) : "");
-document.querySelectorAll(".btn[data-msg]").forEach(a => { a.href = wa(a.dataset.msg); });
-document.getElementById("wa-main").href = wa(MSG);
+/* ===== ROTEAMENTO DE ATENDIMENTO — única fonte da verdade =====
+   Cada botão leva o cliente direto ao WhatsApp de quem atende aquela demanda,
+   com uma mensagem que já diz o setor (em negrito) e pede o detalhe que a vendedora precisa.
+   Mudou quem atende o quê? Edite só ATENDIMENTO e SETORES. */
+const ATENDIMENTO = {
+  loja:     "553384653046", // (33) 8465-3046 — Filamentos & Resinas, Impressoras 3D, Outros
+  projetos: "553384121784", // (33) 8412-1784 — Encomendas 3D, Treinamentos & Suporte
+};
+const SETORES = {             // chave = classe do botão
+  filamentos:   { para: "loja",     msg: "quero comprar *Filamentos & Resinas*. Material e cor:" },
+  impressoras:  { para: "loja",     msg: "tenho interesse em *Impressoras 3D*. Vou usar para:" },
+  outros:       { para: "loja",     msg: "gostaria de informações sobre:" },
+  encomendas:   { para: "projetos", msg: "quero fazer uma *Encomenda 3D*. A peça é:" },
+  treinamentos: { para: "projetos", msg: "preciso de *Treinamento ou Suporte*. Assunto:" },
+};
+/* Origem do contato, para medir de onde vem cada cliente (inclusive anúncios):
+   links.casa3d.online/?origem=anuncio → "Vim do anúncio". Sem parâmetro → Instagram (link da bio). */
+const ORIGENS = { instagram: "do Instagram", anuncio: "do anúncio", google: "do Google", site: "do site", tiktok: "do TikTok" };
+const origem = ORIGENS[new URLSearchParams(location.search).get("origem")] || ORIGENS.instagram;
+
+const wa = (numero, texto) => "https://wa.me/" + numero + "?text=" + encodeURIComponent(texto);
+const abertura = "Olá Casa3D! Vim " + origem + " e ";
+
+document.querySelectorAll("nav.links .btn").forEach(a => {
+  const setor = Object.keys(SETORES).find(k => a.classList.contains(k));
+  if (!setor) return;
+  const { para, msg } = SETORES[setor];
+  a.href = wa(ATENDIMENTO[para], abertura + msg + " ");
+});
+document.querySelectorAll("[data-whatsapp]").forEach(a => {
+  a.href = wa(ATENDIMENTO[a.dataset.whatsapp], abertura + "gostaria de informações!");
+});
 /* Rastreamento de cliques (funciona no plano grátis da Vercel):
    cada clique vira uma "página virtual" /clique/<botao> no painel Analytics > Pages */
 const slug = (t) => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/&/g, "e").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
