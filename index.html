@@ -12,19 +12,21 @@
 <meta name="description" content="Casa 3D — Espaço Maker em Governador Valadares. Filamentos, resinas, impressoras 3D, encomendas e treinamentos.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:opsz,wght@14..32,400..700&display=swap">
 <style>
+/* Contraste: botões com texto branco usam tons "fundo" da marca (laranja-fundo 4.3:1, azul-fundo 4.8:1) para passar no WCAG AA em qualquer tamanho */
 /* Layout: coluna única centrada (link na bio), logo → 5 botões por setor → rodapé escuro com contato. Tokens = ID oficial casa3d.online/identidade-visual */
 :root{
   --preto:#111211; --branco:#F9F9F6; --papel:#F5F5F1;
-  --laranja:#FF6B19; --laranja-fundo:#CF4A08; --azul:#147DF5; --verde:#B8F457;
+  --laranja:#FF6B19; --laranja-fundo:#CF4A08; --azul:#147DF5; --azul-fundo:#0F6FE0; --verde:#B8F457;
   --bg:var(--branco); --fg:var(--preto); --muted:#5E615B; --line:#E3E3DC;
   --foot-bg:var(--preto); --foot-fg:var(--branco); --foot-muted:#A7AAA2; --foot-line:#2A2C2A;
   --wordmark:var(--preto);
   --btn-neutro-bg:var(--preto); --btn-neutro-fg:var(--branco);
   --layer:rgba(17,18,17,.22);
   --f-display:"Chakra Petch","Bahnschrift","Arial Narrow",system-ui,sans-serif;
-  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  /* Sistema tipográfico: Chakra Petch = voz da marca (wordmark, rótulos, assinatura); Inter = leitura e ação (botões, textos, contatos) */
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#161716; --fg:var(--branco); --muted:#A7AAA2; --line:#2A2C2A;
@@ -40,7 +42,7 @@
 }
 *{box-sizing:border-box}
 html,body{min-height:100%}
-body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.5;display:flex;flex-direction:column;min-height:100vh;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.5;display:flex;flex-direction:column;min-height:100vh;-webkit-font-smoothing:antialiased;font-optical-sizing:auto;-webkit-tap-highlight-color:transparent}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--laranja);outline-offset:3px;border-radius:6px}
 
@@ -56,14 +58,14 @@ main{flex:1;display:flex;justify-content:center;padding-inline:16px;padding-bloc
 .wordmark{display:flex;flex-direction:column;align-items:center;line-height:1}
 .wordmark .name{font-family:var(--f-display);font-weight:700;font-size:48px;letter-spacing:-.01em;color:var(--wordmark)}
 .wordmark .name b{color:var(--laranja);font-weight:700}
-.wordmark .tag{font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.62em;margin-top:6px;padding-left:.62em;color:var(--wordmark)}
-.tagline{font-size:14.5px;color:var(--muted);max-width:30ch;text-wrap:balance;margin:4px 0 0}
+.wordmark .tag{font-family:var(--f-display);font-weight:500;font-size:11.5px;letter-spacing:.62em;margin-top:6px;padding-left:.62em;color:var(--wordmark)}
+.tagline{font-size:15px;line-height:1.45;letter-spacing:-.006em;color:var(--muted);max-width:30ch;text-wrap:balance;margin:4px 0 0}
 
 nav.links{width:100%;display:flex;flex-direction:column;gap:14px}
 .btn{--b:var(--laranja);--t:var(--preto);
   display:flex;align-items:center;gap:14px;min-height:60px;padding:12px 18px;border-radius:10px;
   background:var(--b);color:var(--t);text-decoration:none;
-  font-family:var(--f-body);font-weight:700;font-size:18.5px;letter-spacing:-.005em;
+  font-family:var(--f-body);font-weight:700;font-size:clamp(17px,4.75vw,19px);line-height:1.2;letter-spacing:-.014em;
   box-shadow:0 3px 0 var(--layer),0 6px 0 color-mix(in srgb,var(--layer) 50%,transparent);
   transition:transform .16s ease,box-shadow .16s ease;
 }
@@ -74,12 +76,12 @@ nav.links{width:100%;display:flex;flex-direction:column;gap:14px}
 .btn.filamentos{--b:var(--laranja);--t:var(--preto)}
 .btn.encomendas{--b:var(--laranja-fundo);--t:var(--branco)}
 .btn.impressoras{--b:var(--verde);--t:var(--preto)}
-.btn.treinamentos{--b:var(--azul);--t:#fff}
+.btn.treinamentos{--b:var(--azul-fundo);--t:#fff}
 .btn.outros{--b:var(--btn-neutro-bg);--t:var(--btn-neutro-fg)}
 
-.mini{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;font-size:14px;font-weight:600}
-.mini a{text-decoration:none;color:var(--muted);border-bottom:1.5px solid transparent;padding-bottom:1px}
-.mini a:hover{color:var(--fg);border-color:var(--laranja)}
+.mini{display:flex;flex-wrap:wrap;justify-content:center;gap:0 14px;font-size:14px;font-weight:600}
+.mini a{text-decoration:none;color:var(--muted);display:inline-flex;align-items:center;min-height:44px;padding-inline:4px;letter-spacing:-.006em;background:linear-gradient(var(--laranja),var(--laranja)) no-repeat 50% 78%/0 1.5px;transition:background-size .2s ease,color .15s}
+.mini a:hover{color:var(--fg);background-size:calc(100% - 8px) 1.5px}
 
 footer{background:var(--foot-bg);color:var(--foot-fg);padding-inline:16px;padding-block:40px 36px}
 .fwrap{max-width:720px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:28px 40px}
@@ -87,21 +89,21 @@ footer{background:var(--foot-bg);color:var(--foot-fg);padding-inline:16px;paddin
 .eyebrow{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--laranja);margin:0 0 10px}
 .addr{font-size:16px;line-height:1.55;margin:0 0 8px}
 .addr a{text-decoration:none;border-bottom:1.5px solid var(--laranja)}
-.contact{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;font-size:15px}
+.contact{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;font-size:15px;letter-spacing:-.006em}
 .contact li{display:flex;gap:10px;align-items:baseline}
 .contact .k{color:var(--foot-muted);font-size:13px;line-height:1.3;flex:0 0 108px}
 .contact a{text-decoration:none}
 .contact a:hover{color:var(--laranja)}
 .num{font-variant-numeric:tabular-nums}
 .social{display:flex;gap:10px;margin-top:6px}
-.social a{width:42px;height:42px;display:grid;place-items:center;border:1.5px solid var(--foot-line);border-radius:10px;color:var(--foot-fg);transition:border-color .15s,color .15s}
+.social a{width:44px;height:44px;display:grid;place-items:center;border:1.5px solid var(--foot-line);border-radius:10px;color:var(--foot-fg);transition:border-color .15s,color .15s}
 .social a:hover{border-color:var(--laranja);color:var(--laranja)}
 .social svg{width:20px;height:20px}
 .legal{grid-column:1/-1;border-top:1px solid var(--foot-line);padding-top:18px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:13px;color:var(--foot-muted)}
 .legal strong{font-family:var(--f-display);font-weight:600;color:var(--foot-fg);letter-spacing:.04em}
 
 @media (max-width:600px){.fwrap{grid-template-columns:1fr}.wordmark .name{font-size:44px}}
-@media (prefers-reduced-motion:reduce){.btn,.social a{transition:none}.btn:hover{transform:none}}
+@media (prefers-reduced-motion:reduce){.btn,.social a,.mini a{transition:none}.btn:hover{transform:none}}
 </style>
 <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
