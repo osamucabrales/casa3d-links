@@ -19,6 +19,7 @@
 :root{
   --preto:#111211; --branco:#F9F9F6; --papel:#F5F5F1;
   --laranja:#FF6B19; --laranja-fundo:#CF4A08; --azul:#147DF5; --azul-fundo:#0F6FE0; --verde:#B8F457;
+  --roxo:#6D28D9; /* evento: Halloween (7.1:1 com branco) */
   --bg:var(--branco); --fg:var(--preto); --muted:#5E615B; --line:#E3E3DC;
   --foot-bg:var(--preto); --foot-fg:var(--branco); --foot-muted:#A7AAA2; --foot-line:#2A2C2A;
   --wordmark:var(--preto);
@@ -32,13 +33,13 @@
   --bg:#161716; --fg:var(--branco); --muted:#A7AAA2; --line:#2A2C2A;
   --foot-bg:#0B0C0B; --foot-line:#242624; --wordmark:var(--branco);
   --btn-neutro-bg:var(--branco); --btn-neutro-fg:var(--preto);
-  --layer:rgba(0,0,0,.5); color-scheme:dark;
+  --roxo:#7C3AED; --layer:rgba(0,0,0,.5); color-scheme:dark;
 }}
 :root[data-theme="dark"]{
   --bg:#161716; --fg:var(--branco); --muted:#A7AAA2; --line:#2A2C2A;
   --foot-bg:#0B0C0B; --foot-line:#242624; --wordmark:var(--branco);
   --btn-neutro-bg:var(--branco); --btn-neutro-fg:var(--preto);
-  --layer:rgba(0,0,0,.5); color-scheme:dark;
+  --roxo:#7C3AED; --layer:rgba(0,0,0,.5); color-scheme:dark;
 }
 *{box-sizing:border-box}
 html,body{min-height:100%}
@@ -78,6 +79,13 @@ nav.links{width:100%;display:flex;flex-direction:column;gap:14px}
 .btn.impressoras{--b:var(--verde);--t:var(--preto)}
 .btn.treinamentos{--b:var(--azul-fundo);--t:#fff}
 .btn.outros{--b:var(--btn-neutro-bg);--t:var(--btn-neutro-fg)}
+/* Destaque de evento: mesmo componente, um nível acima (mais alto + linha de apoio) */
+.btn.evento{--b:var(--roxo);--t:#fff;min-height:72px;margin-bottom:6px}
+.btn .txt{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding-right:26px;text-align:center}
+.btn .txt .lbl{flex:none;padding-right:0}
+.btn .sub{font-weight:500;font-size:13.5px;letter-spacing:0;opacity:.88}
+/* Institucional (não é venda): contorno em vez de preenchimento */
+.btn.visitas{--b:transparent;--t:var(--fg);border:2px solid var(--fg);padding-block:10px}
 
 .mini{display:flex;flex-wrap:wrap;justify-content:center;gap:0 14px;font-size:14px;font-weight:600}
 .mini a{text-decoration:none;color:var(--muted);display:inline-flex;align-items:center;min-height:44px;padding-inline:4px;letter-spacing:-.006em;background:linear-gradient(var(--laranja),var(--laranja)) no-repeat 50% 78%/0 1.5px;transition:background-size .2s ease,color .15s}
@@ -89,11 +97,16 @@ footer{background:var(--foot-bg);color:var(--foot-fg);padding-inline:16px;paddin
 .eyebrow{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--laranja);margin:0 0 10px}
 .addr{font-size:16px;line-height:1.55;margin:0 0 8px}
 .addr a{text-decoration:none;border-bottom:1.5px solid var(--laranja)}
-.contact{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;font-size:15px;letter-spacing:-.006em}
+.contact{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:2px;font-size:15px;letter-spacing:-.006em}
 .contact li{display:flex;gap:10px;align-items:baseline}
 .contact .k{color:var(--foot-muted);font-size:13px;line-height:1.3;flex:0 0 108px}
 .contact a{text-decoration:none}
 .contact a:hover{color:var(--laranja)}
+.contact a.wa,.contact .mail{display:inline-flex;align-items:center;gap:10px;min-height:44px}
+.contact .mail{overflow-wrap:anywhere}
+.contact a.wa svg,.contact .mail svg{width:20px;height:20px;flex:none}
+.contact a.wa svg{color:#25D366}
+.contact .mail svg{color:var(--foot-muted)}
 .num{font-variant-numeric:tabular-nums}
 .social{display:flex;gap:10px;margin-top:6px}
 .social a{width:44px;height:44px;display:grid;place-items:center;border:1.5px solid var(--foot-line);border-radius:10px;color:var(--foot-fg);transition:border-color .15s,color .15s}
@@ -130,6 +143,10 @@ footer{background:var(--foot-bg);color:var(--foot-fg);padding-inline:16px;paddin
     </header>
 
     <nav class="links" aria-label="Fale com a Casa 3D">
+      <a class="btn evento" href="https://www.sympla.com.br/evento/halloween-casa-3d-festa-a-fantasia/3630404">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V10a7 7 0 0 1 14 0v11l-2.33-1.75L14.33 21 12 19.25 9.67 21l-2.34-1.75z"/><path d="M9.5 10.5h.01M14.5 10.5h.01"/></svg>
+        <span class="txt"><span class="lbl">Halloween Casa 3D</span><span class="sub">Festa à fantasia · ingressos</span></span>
+      </a>
       <a class="btn filamentos" href="#">
         <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/><path d="M12 3v5.8M12 15.2V21"/></svg>
         <span class="lbl">Filamentos &amp; Resinas</span>
@@ -145,6 +162,10 @@ footer{background:var(--foot-bg);color:var(--foot-fg);padding-inline:16px;paddin
       <a class="btn treinamentos" href="#">
         <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.2 5.2L3.8 17.2a1.8 1.8 0 0 0 2.6 2.6l5.7-5.7a4 4 0 0 0 5.2-5.2l-2.4 2.4-2.4-.6-.6-2.4z"/></svg>
         <span class="lbl">Treinamentos &amp; Suporte</span>
+      </a>
+      <a class="btn visitas" href="https://casa3d.online/visitas-mediadas">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><path d="M16 4.8a3.2 3.2 0 0 1 0 6.4M18 14.8c1.9.6 3 2.3 3 5.2"/></svg>
+        <span class="lbl">Visitas Mediadas</span>
       </a>
       <a class="btn outros" href="#">
         <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20.2l1.1-4.2A8 8 0 1 1 20 12z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></svg>
@@ -176,10 +197,8 @@ footer{background:var(--foot-bg);color:var(--foot-fg);padding-inline:16px;paddin
     <div>
       <p class="eyebrow">Fale com a gente</p>
       <ul class="contact">
-        <li><span class="k">Encomendas e treinamentos</span><a class="num" data-whatsapp="projetos" href="https://wa.me/553384121784">(33) 8412-1784</a></li>
-        <li><span class="k">Filamentos e impressoras</span><a class="num" data-whatsapp="loja" href="https://wa.me/553384653046">(33) 8465-3046</a></li>
-        <li><span class="k">Telefone</span><span class="num">(33) 3082-3168</span></li>
-        <li><span class="k">E-mail</span><span style="overflow-wrap:anywhere">contatocasa3d@casa3d.online</span></li>
+        <li><a class="num wa" data-whatsapp="geral" href="https://wa.me/553330823168" aria-label="WhatsApp (33) 3082-3168"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20.2l1.1-4.2A8 8 0 1 1 20 12z"/><path d="M9 8.6c0 3.3 3 6.4 6.4 6.4l.9-1.6-1.9-.9-.9.8a5 5 0 0 1-2.8-2.8l.8-.9-.9-1.9z" fill="currentColor" stroke="none"/></svg>(33) 3082-3168</a></li>
+        <li><span class="mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg><span>contatocasa3d@casa3d.online</span></span></li>
       </ul>
     </div>
     <div class="legal">
@@ -197,6 +216,7 @@ footer{background:var(--foot-bg);color:var(--foot-fg);padding-inline:16px;paddin
 const ATENDIMENTO = {
   loja:     "553384653046", // (33) 8465-3046 — Filamentos & Resinas, Impressoras 3D, Outros
   projetos: "553384121784", // (33) 8412-1784 — Encomendas 3D, Treinamentos & Suporte
+  geral:    "553330823168", // (33) 3082-3168 — rodapé
 };
 const SETORES = {             // chave = classe do botão
   filamentos:   { para: "loja",     msg: "quero comprar *Filamentos & Resinas*. Material e cor:" },
