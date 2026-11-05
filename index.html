@@ -19,7 +19,6 @@
 :root{
   --preto:#111211; --branco:#F9F9F6; --papel:#F5F5F1;
   --laranja:#FF6B19; --laranja-fundo:#CF4A08; --azul:#147DF5; --azul-fundo:#0F6FE0; --verde:#B8F457;
-  --roxo:#6D28D9; /* evento: Halloween (7.1:1 com branco) */
   --bg:var(--branco); --fg:var(--preto); --muted:#5E615B; --line:#E3E3DC;
   --foot-bg:var(--preto); --foot-fg:var(--branco); --foot-muted:#A7AAA2; --foot-line:#2A2C2A;
   --wordmark:var(--preto);
@@ -33,13 +32,13 @@
   --bg:#161716; --fg:var(--branco); --muted:#A7AAA2; --line:#2A2C2A;
   --foot-bg:#0B0C0B; --foot-line:#242624; --wordmark:var(--branco);
   --btn-neutro-bg:var(--branco); --btn-neutro-fg:var(--preto);
-  --roxo:#7C3AED; --layer:rgba(0,0,0,.5); color-scheme:dark;
+  --layer:rgba(0,0,0,.5); color-scheme:dark;
 }}
 :root[data-theme="dark"]{
   --bg:#161716; --fg:var(--branco); --muted:#A7AAA2; --line:#2A2C2A;
   --foot-bg:#0B0C0B; --foot-line:#242624; --wordmark:var(--branco);
   --btn-neutro-bg:var(--branco); --btn-neutro-fg:var(--preto);
-  --roxo:#7C3AED; --layer:rgba(0,0,0,.5); color-scheme:dark;
+  --layer:rgba(0,0,0,.5); color-scheme:dark;
 }
 *{box-sizing:border-box}
 html,body{min-height:100%}
@@ -80,7 +79,9 @@ nav.links{width:100%;display:flex;flex-direction:column;gap:14px}
 .btn.treinamentos{--b:var(--azul-fundo);--t:#fff}
 .btn.outros{--b:var(--btn-neutro-bg);--t:var(--btn-neutro-fg)}
 /* Destaque de evento: mesmo componente, um nível acima (mais alto + linha de apoio) */
-.btn.evento{--b:var(--roxo);--t:#fff;min-height:72px;margin-bottom:6px}
+.btn.evento{--b:var(--preto);--t:var(--laranja);min-height:72px;margin-bottom:6px;border:2px solid var(--laranja)} /* Black Friday: preto + laranja (6.6:1) */
+.btn.evento .lbl{font-family:var(--f-display);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.btn.evento .sub{color:var(--branco)}
 .btn .txt{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding-right:26px;text-align:center}
 .btn .txt .lbl{flex:none;padding-right:0}
 .btn .sub{font-weight:500;font-size:13.5px;letter-spacing:0;opacity:.88}
@@ -143,9 +144,9 @@ footer{background:var(--foot-bg);color:var(--foot-fg);padding-inline:16px;paddin
     </header>
 
     <nav class="links" aria-label="Fale com a Casa 3D">
-      <a class="btn evento" href="https://www.sympla.com.br/evento/halloween-casa-3d-festa-a-fantasia/3630404">
-        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V10a7 7 0 0 1 14 0v11l-2.33-1.75L14.33 21 12 19.25 9.67 21l-2.34-1.75z"/><path d="M9.5 10.5h.01M14.5 10.5h.01"/></svg>
-        <span class="txt"><span class="lbl">Halloween Casa 3D</span><span class="sub">Festa à fantasia · ingressos</span></span>
+      <a class="btn evento" href="https://wa.me/553330823168?text=Vim%20das%20redes%20sociais%20e%20quero%20comprar%20na%20Casa%203D">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><path d="M7.5 7.5h.01"/></svg>
+        <span class="txt"><span class="lbl">Black Friday</span><span class="sub">Ofertas pelo WhatsApp</span></span>
       </a>
       <a class="btn filamentos" href="#">
         <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/><path d="M12 3v5.8M12 15.2V21"/></svg>
