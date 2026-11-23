@@ -56,6 +56,8 @@ Os botões de destaque (`.btn.evento`) são para campanhas temporárias, como Bl
 
 ## Análises (Vercel Web Analytics, plano grátis)
 
+O mesmo GA4 do site principal (`G-DE5D5Y1RW3`) e a Vercel Web Analytics medem o subdomínio somente após o visitante aceitar estatísticas no aviso de privacidade. A escolha é local ao subdomínio e pode ser alterada no rodapé. O Search Console da propriedade de domínio `casa3d.online` também abrange `links.casa3d.online`; o sitemap próprio é `/sitemap.xml`.
+
 Para ver as análises:
 
 1. Abra vercel.com, entre no projeto **casa3d-links** e clique em **Analytics**.
@@ -63,7 +65,16 @@ Para ver as análises:
 3. **Pages** mostra os cliques. Cada clique é registrado como uma página virtual `/clique/<botão>`, por exemplo `/clique/black-friday` ou `/clique/encomendas-3d`.
 4. **Referrers** e **UTM Parameters** mostram de onde as pessoas vieram.
 
-Todo link que vai para casa3d.online sai com `utm_source=links&utm_medium=<origem>&utm_campaign=linktree&utm_content=<botão>`, para o GA4 do site atribuir a visita ao link da bio e ao botão clicado.
+Use estes endereços **nos canais de divulgação** para atribuir a entrada corretamente no GA4:
+
+| Canal | URL pronta |
+|---|---|
+| Bio do Instagram | `https://links.casa3d.online/?utm_source=instagram&utm_medium=social&utm_campaign=bio` |
+| Stories da Feira | `https://links.casa3d.online/?utm_source=instagram&utm_medium=social&utm_campaign=feira-maker&utm_content=stories` |
+| WhatsApp | `https://links.casa3d.online/?utm_source=whatsapp&utm_medium=social&utm_campaign=feira-maker` |
+| QR na loja | `https://links.casa3d.online/?utm_source=loja&utm_medium=qrcode&utm_campaign=links` |
+
+`utm_source` identifica o canal, `utm_medium` o formato, `utm_campaign` a campanha e `utm_content` diferencia peças. Os links **dentro** do site de links para `casa3d.online` não recebem nova UTM: os dois usam a mesma propriedade GA4 e uma campanha interna poderia alterar a atribuição da origem. O botão escolhido é medido pelo evento `select_content` após consentimento. Links para WhatsApp abrem o aplicativo; o evento mede o clique, não confirma mensagem enviada.
 
 Limites do plano grátis: 30 dias de histórico e 50 mil eventos por mês. Os cliques também entram na soma de "Page Views". Para saber as visitas reais, olhe só a página `/`.
 

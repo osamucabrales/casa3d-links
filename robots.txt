@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://links.casa3d.online/sitemap.xml

@@ -10,6 +10,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='170 30 374 290'%3E%3Cg fill='none' stroke='%23FF6B19' stroke-width='30' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='190,158 357,52 524,158'/%3E%3Cpolygon points='357,112 438,160 357,206 276,160'/%3E%3Cpolyline points='274,212 357,258 440,212'/%3E%3Cpolyline points='274,250 357,296 440,250'/%3E%3C/g%3E%3C/svg%3E">
 <title>Casa 3D Links</title>
 <meta name="description" content="Casa 3D — Espaço Maker em Governador Valadares. Filamentos, resinas, impressoras 3D, encomendas, treinamentos e Feira Maker.">
+<link rel="canonical" href="https://links.casa3d.online/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:opsz,wght@14..32,400..700&display=swap">
@@ -125,6 +126,16 @@ footer{background:var(--foot-bg);color:var(--branco);padding-inline:16px;padding
 .legal{grid-column:1/-1;border-top:1px solid var(--foot-line);padding-top:18px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:13px;color:var(--muted)}
 .legal .slogan{font-family:var(--f-display);font-weight:600;color:var(--branco);letter-spacing:.04em}
 .legal .slogan b{color:var(--laranja);font-weight:700}
+.privacy-choice{position:fixed;z-index:20;left:16px;bottom:16px;width:min(410px,calc(100vw - 32px));padding:20px;background:var(--branco);color:var(--preto);border-radius:14px;box-shadow:0 12px 38px #0009;font-size:13px;line-height:1.5}
+.privacy-choice[hidden]{display:none}
+.privacy-choice strong{display:block;font-size:15px;margin-bottom:6px}
+.privacy-choice p{margin:0 0 14px;color:#444}
+.privacy-choice a{color:#a43e04;text-underline-offset:2px}
+.privacy-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.privacy-actions button{border:0;border-radius:20px;padding:10px 14px;background:var(--laranja);color:var(--preto);font:700 12px var(--f-body);cursor:pointer}
+.privacy-actions button:hover{filter:brightness(.94)}
+.privacy-actions .privacy-settings{background:transparent;text-decoration:underline;padding-left:0}
+.privacy-reopen{border:0;background:none;color:var(--muted);padding:0;text-decoration:underline;cursor:pointer;font:inherit}
 
 @media (max-width:700px){.mapa-in{grid-template-columns:1fr}.mapa-frame{aspect-ratio:4/3}}
 @media (max-width:600px){.fwrap{grid-template-columns:1fr}.wordmark .name{font-size:44px}}
@@ -133,7 +144,6 @@ footer{background:var(--foot-bg);color:var(--branco);padding-inline:16px;padding
 <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
-<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -242,11 +252,86 @@ footer{background:var(--foot-bg);color:var(--branco);padding-inline:16px;padding
     <div class="legal">
       <span>Copyright Casa 3D Espaço Maker LTDA® 2026</span>
       <span class="slogan">O <b>SEU</b> Espaço Maker</span>
+      <button class="privacy-reopen" type="button">Preferências de privacidade</button>
     </div>
   </div>
 </footer>
 
+<aside class="privacy-choice" aria-label="Preferências de privacidade" hidden>
+  <strong>Suas preferências de privacidade</strong>
+  <p>Usamos estatísticas opcionais para entender o uso desta página. Você pode recusar e continuar navegando. <a href="https://casa3d.online/privacidade">Aviso de privacidade</a>.</p>
+  <div class="privacy-actions">
+    <button type="button" class="privacy-settings">Configurações</button>
+    <button type="button" class="privacy-reject">Rejeitar</button>
+    <button type="button" class="privacy-accept">Aceitar estatísticas</button>
+  </div>
+</aside>
+
 <script>
+/* A mesma propriedade GA4 do site principal, carregada somente após consentimento. */
+(() => {
+  const id = 'G-DE5D5Y1RW3';
+  const key = 'casa3d:analytics-consent:v1';
+  const maxAge = 180 * 24 * 60 * 60 * 1000;
+  const panel = document.querySelector('.privacy-choice');
+  let enabled = false;
+  let choice = null;
+  try {
+    const saved = JSON.parse(localStorage.getItem(key) || 'null');
+    if (saved && Date.now() - saved.time < maxAge && ['granted', 'denied'].includes(saved.choice)) choice = saved.choice;
+  } catch (_) {}
+  function pageLocation() {
+    const url = new URL(location.origin + location.pathname);
+    for (const name of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content']) {
+      const value = new URLSearchParams(location.search).get(name);
+      if (value && /^[a-z0-9_-]{1,100}$/i.test(value)) url.searchParams.set(name, value);
+    }
+    return url.href;
+  }
+  function enable() {
+    if (enabled) return;
+    enabled = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', id, { send_page_view: false, allow_google_signals: false, allow_ad_personalization_signals: false });
+    window.gtag('event', 'page_view', { page_location: pageLocation(), page_title: document.title });
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+    script.id = 'casa3d-links-ga4';
+    document.head.appendChild(script);
+    const vercel = document.createElement('script');
+    vercel.defer = true;
+    vercel.src = '/_vercel/insights/script.js';
+    vercel.id = 'casa3d-links-vercel-analytics';
+    document.head.appendChild(vercel);
+  }
+  function decide(next) {
+    choice = next;
+    try { localStorage.setItem(key, JSON.stringify({ choice: next, time: Date.now() })); } catch (_) {}
+    panel.hidden = true;
+    if (next === 'granted') enable();
+    else if (enabled) {
+      window['ga-disable-' + id] = true;
+      location.reload();
+    }
+  }
+  panel.hidden = !!choice;
+  if (choice === 'granted') enable();
+  panel.querySelector('.privacy-accept').addEventListener('click', () => decide('granted'));
+  panel.querySelector('.privacy-reject').addEventListener('click', () => decide('denied'));
+  panel.querySelector('.privacy-settings').addEventListener('click', () => {
+    panel.querySelector('p').textContent = 'Estatísticas do Google Analytics: mede visualizações e cliques após sua escolha. Você pode aceitar ou rejeitar. A política completa está no rodapé.';
+  });
+  document.querySelector('.privacy-reopen').addEventListener('click', () => { panel.hidden = false; });
+  document.addEventListener('click', event => {
+    if (choice !== 'granted') return;
+    const link = event.target.closest?.('a[href]');
+    if (!link) return;
+    window.gtag?.('event', 'select_content', { content_type: 'link', item_id: slug(nomeDo(link)) });
+  }, true);
+})();
 /* Vídeo do Berigudigo: sem som (muted) e parado para quem pede menos movimento no sistema */
 (() => {
   const v = document.querySelector(".berigudigo video");
@@ -274,8 +359,9 @@ const SETORES = {             // chave = classe do botão
 };
 /* Origem do contato, para medir de onde vem cada cliente (inclusive anúncios):
    links.casa3d.online/?origem=anuncio → "Vim do anúncio". Sem parâmetro → Instagram (link da bio). */
-const ORIGENS = { instagram: "do Instagram", anuncio: "do anúncio", google: "do Google", site: "do site", tiktok: "do TikTok" };
-const chaveOrigem = new URLSearchParams(location.search).get("origem");
+const ORIGENS = { instagram: "do Instagram", anuncio: "do anúncio", google: "do Google", site: "do site", tiktok: "do TikTok", whatsapp: "do WhatsApp", loja: "da loja" };
+const paramsEntrada = new URLSearchParams(location.search);
+const chaveOrigem = paramsEntrada.get("origem") || paramsEntrada.get("utm_source");
 const origem = ORIGENS[chaveOrigem] || ORIGENS.instagram;
 
 const wa = (numero, texto) => "https://wa.me/" + numero + "?text=" + encodeURIComponent(texto);
@@ -294,16 +380,9 @@ document.querySelectorAll("[data-whatsapp]").forEach(a => {
 const slug = (t) => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/&/g, "e").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const nomeDo = (a) => (a.querySelector(".lbl")?.textContent || a.getAttribute("aria-label") || a.textContent).trim();
 
-/* UTM nos links para o site casa3d.online: o GA4 do site passa a mostrar que a visita veio do link da bio
-   e por qual botão (utm_content). Ex.: ?utm_source=links&utm_medium=instagram&utm_campaign=linktree&utm_content=inscricao-feira-maker */
-document.querySelectorAll('a[href^="https://casa3d.online"]').forEach(a => {
-  const u = new URL(a.href);
-  u.searchParams.set("utm_source", "links");
-  u.searchParams.set("utm_medium", chaveOrigem && ORIGENS[chaveOrigem] ? chaveOrigem : "instagram");
-  u.searchParams.set("utm_campaign", "linktree");
-  u.searchParams.set("utm_content", slug(nomeDo(a)));
-  a.href = u.toString();
-});
+/* Os links de divulgação que chegam aqui recebem UTMs. Entre este subdomínio e
+   casa3d.online mantemos a mesma sessão GA4, sem criar outra campanha interna.
+   O botão escolhido é medido como evento select_content após consentimento. */
 
 /* Rastreamento de cliques (funciona no plano grátis da Vercel):
    cada clique vira uma "página virtual" /clique/<botao> no painel Analytics > Pages */
