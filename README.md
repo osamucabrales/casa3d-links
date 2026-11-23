@@ -18,7 +18,7 @@ O mascote oficial da Casa 3D é o **BERIGUDIGO**, um ornitorrinco laranja. Use s
 |---|---|
 | `index.html` | A página inteira: HTML, CSS e JS num arquivo só, sem build. |
 | `berigudigo.mp4` | Vídeo do Berigudigo (0,55 MB, sem faixa de áudio), em loop, na largura toda. |
-| `icons/*.webp` | Ícones 3D dos botões, 132 px (3× o tamanho exibido de 44 px), 3–8 KB cada. |
+| `icons/*.webp` | Ícones 3D dos botões, 132 px (3× o tamanho exibido de 44 px), 8–13 KB cada. |
 
 Ícones por botão: Inscrição Feira Maker → `feira-maker.webp`, Filamentos & Resinas → `filamentos.webp`, Encomendas 3D → `encomendas.webp`, Impressoras 3D → `impressoras.webp`, Treinamentos & Suporte → `treinamentos.webp`, Visitas Mediadas → `berigudigo.webp`, Outros → `outros.webp`. O Black Friday usa um ícone desenhado em código (etiqueta).
 
