@@ -40,7 +40,8 @@ O roteamento fica no `<script>` do fim do `index.html`, nas constantes `ATENDIME
 | Black Friday (destaque, borda laranja) | WhatsApp (33) 3082-3168, com a mensagem "Vim das redes sociais e quero comprar na Casa 3D" |
 | Inscrição Feira Maker (destaque, borda verde) | https://casa3d.online/eventos/feira-maker-natal-solidario-2026#inscricao |
 | Filamentos & Resinas, Impressoras 3D, Outros | WhatsApp (33) 8465-3046 |
-| Encomendas 3D, Treinamentos & Suporte | WhatsApp (33) 8412-1784 |
+| Encomendas 3D | WhatsApp oficial (33) 3082-3168, com pedido de orçamento |
+| Treinamentos & Suporte | WhatsApp (33) 8412-1784 |
 | Visitas Mediadas (contorno, institucional) | https://casa3d.online/visitas-mediadas |
 | Rodapé | WhatsApp (33) 3082-3168, contatocasa3d@casa3d.online e Política de uso de dados (casa3d.online/privacidade) |
 | Links do topo | Site, Loja Maker, Blog, Podcast |
@@ -77,6 +78,8 @@ Use estes endereços **nos canais de divulgação** para atribuir a entrada corr
 `utm_source` identifica o canal, `utm_medium` o formato, `utm_campaign` a campanha e `utm_content` diferencia peças. Os links **dentro** do site de links para `casa3d.online` não recebem nova UTM: os dois usam a mesma propriedade GA4 e uma campanha interna poderia alterar a atribuição da origem. O botão escolhido é medido pelo evento `select_content` após consentimento. Links para WhatsApp abrem o aplicativo; o evento mede o clique, não confirma mensagem enviada.
 
 Limites do plano grátis: 30 dias de histórico e 50 mil eventos por mês. Os cliques também entram na soma de "Page Views". Para saber as visitas reais, olhe só a página `/`.
+
+No GA4, o Instagram aparece em select_content com item_id=instagram para o botao atual e link_domain=instagram.com para todos os links destinados ao Instagram.
 
 ## Acessibilidade e desempenho
 

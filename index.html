@@ -175,7 +175,7 @@ footer{background:var(--foot-bg);color:var(--branco);padding-inline:16px;padding
         <img class="ic3d" src="icons/filamentos.webp" alt="" width="44" height="44" decoding="async">
         <span class="lbl">Filamentos &amp; Resinas</span>
       </a>
-      <a class="btn encomendas" href="#">
+      <a class="btn encomendas" href="https://wa.me/553330823168?text=Ol%C3%A1%20Casa3D%21%20Vim%20do%20Instagram%20e%20gostaria%20de%20solicitar%20um%20%2Aor%C3%A7amento%20de%20impress%C3%A3o%203D%2A.%20O%20que%20eu%20quero%20imprimir%3A%20">
         <img class="ic3d" src="icons/encomendas.webp" alt="" width="44" height="44" decoding="async">
         <span class="lbl">Encomendas 3D</span>
       </a>
@@ -329,7 +329,12 @@ footer{background:var(--foot-bg);color:var(--branco);padding-inline:16px;padding
     if (choice !== 'granted') return;
     const link = event.target.closest?.('a[href]');
     if (!link) return;
-    window.gtag?.('event', 'select_content', { content_type: 'link', item_id: slug(nomeDo(link)) });
+    const params = { content_type: 'link', item_id: slug(nomeDo(link)) };
+    const domain = link.hostname?.toLowerCase().replace(/^www\./, '');
+    if (domain === 'instagram.com' || domain?.endsWith('.instagram.com')) {
+      params.link_domain = 'instagram.com';
+    }
+    window.gtag?.('event', 'select_content', params);
   }, true);
 })();
 /* Vídeo do Berigudigo: sem som (muted) e parado para quem pede menos movimento no sistema */
@@ -354,7 +359,7 @@ const SETORES = {             // chave = classe do botão
   filamentos:   { para: "loja",     msg: "quero comprar *Filamentos & Resinas*. Material e cor:" },
   impressoras:  { para: "loja",     msg: "tenho interesse em *Impressoras 3D*. Vou usar para:" },
   outros:       { para: "loja",     msg: "gostaria de informações sobre:" },
-  encomendas:   { para: "projetos", msg: "quero fazer uma *Encomenda 3D*. A peça é:" },
+  encomendas:   { para: "geral", msg: "gostaria de solicitar um *orçamento de impressão 3D*. O que eu quero imprimir:" },
   treinamentos: { para: "projetos", msg: "preciso de *Treinamento ou Suporte*. Assunto:" },
 };
 /* Origem do contato, para medir de onde vem cada cliente (inclusive anúncios):
